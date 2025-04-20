@@ -224,11 +224,31 @@ async function postToPinterest(payload) {
         
         // Find and fill email field
         const emailSelector = await page.$('#email') ? '#email' : 'input[name="email"]';
-        await page.type(emailSelector, process.env.PIN_EMAIL);
+        const pinEmail = process.env.PIN_EMAIL || ''; // Default to empty string if undefined
+        if (typeof pinEmail !== 'string') {
+          console.error('PIN_EMAIL is not a string:', pinEmail);
+          throw new Error('PIN_EMAIL environment variable must be a string.');
+        }
+        if (pinEmail) { // Only type if email is not empty
+          await page.type(emailSelector, pinEmail);
+        } else {
+          console.error('PIN_EMAIL environment variable is missing or empty.');
+          throw new Error('PIN_EMAIL environment variable is missing or empty.');
+        }
         
         // Find and fill password field
         const passwordSelector = await page.$('#password') ? '#password' : 'input[name="password"], input[type="password"]';
-        await page.type(passwordSelector, process.env.PIN_PASSWORD);
+        const pinPassword = process.env.PIN_PASSWORD || ''; // Default to empty string if undefined
+        if (typeof pinPassword !== 'string') {
+          console.error('PIN_PASSWORD is not a string:', pinPassword);
+          throw new Error('PIN_PASSWORD environment variable must be a string.');
+        }
+        if (pinPassword) { // Only type if password is not empty
+          await page.type(passwordSelector, pinPassword);
+        } else {
+          console.error('PIN_PASSWORD environment variable is missing or empty.');
+          throw new Error('PIN_PASSWORD environment variable is missing or empty.');
+        }
         
         // Find login button - try multiple selectors
         let loginButton = null;

@@ -4,11 +4,14 @@
   "description": "Automated Pinterest pin posting tool",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "api": "node api-server.js"
   },
   "dependencies": {
     "puppeteer": "^21.5.0",
     "node-fetch": "^2.6.9",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2"
   }
 } 

@@ -1,9 +1,8 @@
 {
-  "imageUrl": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131",
-  "title": "Test Pinterest Pin",
-  "description": "This is a test pin created by an automated script",
-  "link": "https://example.com",
+  "imageUrl": "https://pinauto.onaitools.com/static/generated_1745179463_2b0c278e.png",
+  "title": "Monarch Butterfly Symbolism: What Do They Really Represent?",
+  "description": "Discover the deep spiritual and cultural meanings behind monarch butterflies. From transformation to hope, learn what these beautiful creatures symbolize. Tap to explore more!",
+  "link": "	https://insectsbite.com/monarch-butterflies-meaning-and-unique-symbolism/",
   "boardName": "",
   "schedule": "2025-04-20 11:30 PM",
-  "tags": ["automation", "test", "pinterest", "nodejs"]
-} 
+  "tags": "(monarch butterfly, conservation, save the butterflies, ecosystem, wildlife protection)"

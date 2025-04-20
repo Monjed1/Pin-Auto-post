@@ -1,0 +1,17 @@
+[Unit]
+Description=Pinterest Auto Post API Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/Pin-Auto-post
+ExecStart=/usr/bin/node /var/www/Pin-Auto-post/api-server.js
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=pinterest-api
+
+[Install]
+WantedBy=multi-user.target 

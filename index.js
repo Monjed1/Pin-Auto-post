@@ -2139,3 +2139,6 @@ process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason);
   process.exit(1);
 }); 
+
+// Export the function for use in other files
+module.exports = { postToPinterest };

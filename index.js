@@ -2134,20 +2134,24 @@ async function attemptButtonClick(page, selectors, timeoutMs = 8000, description
 }
 
 // Read JSON payload from stdin
-let inputData = '';
-process.stdin.on('data', (chunk) => {
-  inputData += chunk;
-});
+// Only read from stdin when run directly (not as a module)
+if (require.main === module) {
+  // Read JSON payload from stdin
+  let inputData = '';
+  process.stdin.on('data', (chunk) => {
+    inputData += chunk;
+  });
 
-process.stdin.on('end', async () => {
-  try {
-    const payload = JSON.parse(inputData);
-    await postToPinterest(payload);
-  } catch (error) {
-    console.error('Error processing input:', error);
-    process.exit(1);
-  }
-});
+  process.stdin.on('end', async () => {
+    try {
+      const payload = JSON.parse(inputData);
+      await postToPinterest(payload);
+    } catch (error) {
+      console.error('Error processing input:', error);
+      process.exit(1);
+    }
+  });
+}
 
 // Handle process termination
 process.on('SIGINT', () => {

@@ -268,11 +268,16 @@ async function postToPinterest(payload) {
           throw new Error('Login button not found');
         }
         
-        // Click login button and wait for navigation
-        await Promise.all([
-          loginButton.click(),
-          page.waitForNavigation({ waitUntil: 'networkidle2', timeout: DEFAULT_TIMEOUT }),
-        ]);
+        // Click login button and wait for navigation with increased timeout
+        console.log('Clicking login button and waiting for navigation...');
+        await loginButton.click();
+        await page.waitForTimeout(1500); // Add a small delay after clicking
+
+        await page.waitForNavigation({
+          waitUntil: 'domcontentloaded', // Less strict wait condition
+          timeout: 90000 // Increased timeout to 90 seconds
+        });
+        console.log('Navigation detected after login click.');
         
         // Save cookies after successful login
         await saveCookies(page);
